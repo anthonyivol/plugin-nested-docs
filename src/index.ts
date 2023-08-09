@@ -6,6 +6,7 @@ import resaveChildren from './hooks/resaveChildren'
 import resaveSelfAfterCreate from './hooks/resaveSelfAfterCreate'
 import type { PluginConfig } from './types'
 import populateBreadcrumbs from './utilities/populateBreadcrumbs'
+import createChildrenListField from './fields/children'
 
 const nestedDocs =
   (pluginConfig: PluginConfig) =>
@@ -22,6 +23,8 @@ const nestedDocs =
         if (!pluginConfig.breadcrumbsFieldSlug) {
           fields.push(createBreadcrumbsField(collection.slug))
         }
+        
+        fields.push(createChildrenListField(collection.slug))
 
         return {
           ...collection,
