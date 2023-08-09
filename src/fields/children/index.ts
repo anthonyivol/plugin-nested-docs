@@ -5,7 +5,9 @@ const createChildrenListField = (
   relationTo: string,
 ): Field => ({
   name: 'children',
-  type: 'text',
+  relationTo,
+  hasMany : true,
+  type: 'relationship',
   admin: {
     components: {
       Field: ChildrenList,
