@@ -7,6 +7,7 @@ import resaveSelfAfterCreate from './hooks/resaveSelfAfterCreate'
 import type { PluginConfig } from './types'
 import populateBreadcrumbs from './utilities/populateBreadcrumbs'
 import createChildrenListField from './fields/children'
+import populateChildren from './hooks/populateChildren'
 
 const nestedDocs =
   (pluginConfig: PluginConfig) =>
@@ -33,6 +34,8 @@ const nestedDocs =
             beforeChange: [
               async ({ req, data, originalDoc }) =>
                 populateBreadcrumbs(req, pluginConfig, collection, data, originalDoc),
+              async ({ req, data, originalDoc }) =>
+                populateChildren(req, pluginConfig, collection, data, originalDoc),
               ...(collection?.hooks?.beforeChange || []),
             ],
             afterChange: [
