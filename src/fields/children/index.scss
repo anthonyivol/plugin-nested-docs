@@ -1,0 +1,11 @@
+@import '~payload/scss';
+
+.children-list table {
+  width: 100%;
+  overflow: auto;
+}
+
+.children-list h3 sup{
+  font-weight: normal;
+  font-size: base(0.5);
+}
